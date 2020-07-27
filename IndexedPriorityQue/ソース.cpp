@@ -30,6 +30,15 @@ int main() {
 	}
 
 	std::cout << std::endl;
+	{
+		PriorityIndexedQue<int> PQ;
+
+		PQ.Push(30, PQ.Low);
+		PQ.Push(31, PQ.Middle);
+		PQ.Push(32, PQ.High);
+		PQ.Push(33, PQ.UltlaHigh); 		
+		PQ.Push(34, PQ.UltlaLow);
+	}
 
 	return 0;
 }

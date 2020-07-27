@@ -5,12 +5,20 @@
 #include <tuple>
 #include <algorithm>
 
-template<class T>
+template<class T, class Priority = std::intmax_t >
 class PriorityIndexedQue {
 public:
-	typedef std::int64_t Priority;
+	//ypedef std::int64_t Priority;
 protected:
 	typedef std::tuple<Priority, T> Item;
+public:
+	enum Order{
+		UltlaHigh=-100,
+		High=1,
+		Middle=0x71000000,
+		Low=0x7f000000,
+		UltlaLow=0x7ff00000
+	};
 public:
 
 	bool Pop() {
@@ -21,7 +29,7 @@ public:
 	bool Push(const T& In,const Priority& P) {
 		D.push_back({ P,In });
 
-		std::sort(D.begin(), D.end(), [](auto& A, auto& B) {return std::get<0>(A) < std::get<0>(B); });//0 is priority High.
+		std::stable_sort(D.begin(), D.end(), [](auto& A, auto& B) {return std::get<0>(A) < std::get<0>(B); });//0 is priority High.
 
 		return true;
 	}
