@@ -8,7 +8,7 @@ int main() {
 	for (size_t i = 0; i < L; i++){
 		PIQ.Push(i, L-i);
 	}
-
+	std::cout <<"Tail:"<<PIQ.TailPriority()<< std::endl;
 	for (auto& o : PIQ) {
 			std::cout <<"P:"<< std::get<0>(o) << ',' <<"V:"<< std::get<1>(o) << std::endl;
 	}

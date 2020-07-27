@@ -21,12 +21,16 @@ public:
 	bool Push(const T& In,const Priority& P) {
 		D.push_back({ P,In });
 
-		std::sort(D.begin(), D.end(), [](auto& A, auto& B) {return std::get<0>(A) < std::get<0>(B); });
+		std::sort(D.begin(), D.end(), [](auto& A, auto& B) {return std::get<0>(A) < std::get<0>(B); });//0 is priority High.
 
 		return true;
 	}
 	const Item& Front() {
 		return  D.front();
+	}
+
+	Priority TailPriority() {
+		return std::get<0>(D.back());
 	}
 
 	const Item& operator[](std::size_t In) {
